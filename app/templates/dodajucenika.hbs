@@ -1,0 +1,10 @@
+<br> <br> <br> <br> <br>
+<p class="unos">
+
+<b> Izaberite razred u koji želite dodati đaka: </b> <br>
+
+{{#each model as |class|}}
+	{{#link-to 'dodajucenikab' class.id}} {{class.name}} {{/link-to}} <br>
+{{/each}}
+
+</p>

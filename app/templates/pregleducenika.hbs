@@ -1,0 +1,85 @@
+<br> <br> <br> 
+
+    <center>
+
+    <table>
+
+    <h2> Izabrani razred: {{model.name}} </h2>
+
+    <br>
+
+    <i> Trenutni učenici u razredu: </i> <br>
+
+    <ol> 
+    {{#each model.students as |student|}}
+      <li> {{student.firstName}}  {{student.lastName}} </li>
+      
+      {{#if student.visible}}
+        <br> Opcija za prvi unos ocene:  <br>
+        	Trenutni predmeti u razredu: 
+		    <select onchange={{action (mut predmetid) value="target.value"}}>
+			   {{#each model.subjects as |subject|}}
+				    <option value="{{subject.id}}"> {{subject.title}} </option>
+         		{{else}}
+            		<option> <b> Trenutno nema predmeta za razred! </b> </option>
+			   {{/each}}
+		    </select>
+          Izaberite ocenu: 
+          <select onchange={{action (mut ocena) value="target.value"}}>
+            <option value="1"> 1 </option>
+            <option value="2"> 2 </option>
+            <option value="3"> 3 </option>
+            <option value="4"> 4 </option>
+            <option value="5"> 5 </option>
+          </select>
+          <button {{action 'unesiOcenu' student}}> Unesite ocenu za učenika </button>
+       
+		< br> 
+		
+		
+			<table>
+        <caption> Trenutno stanje ocena učenika {{student.firstName}} {{student.lastName}}: </caption>
+				<tr> 
+					<td> Brisanje reda </td>
+					<td> Predmet </td>
+					<td> Ocene </td>
+					<td> Unesite novu ocenu </td>
+				</tr>
+				{{#each student.grades as |grades|}}
+				<tr>
+					<td> <button {{action 'izbrisiRed' grades.id}}> <img src="https://thumb.ibb.co/hVTAS5/remove.png" alt="remove" border="0"> </button></td>
+					<td> {{grades.subject.title}} </td>
+					<td> {{grades.marks}} </td>
+					<td> Izaberite ocenu: 
+						  <select onchange={{action (mut ocena) value="target.value"}}>
+							<option value="1"> 1 </option>
+							<option value="2"> 2 </option>
+							<option value="3"> 3 </option>
+							<option value="4"> 4 </option>
+							<option value="5"> 5 </option>
+						  </select>
+						  <button {{action 'unesiPojedinacno' grades.id}}> Unesi ocenu učeniku iz datog predmeta </button>
+					</td>
+				</tr>
+				{{else}}
+				<tr>
+					<td> ----- </td>
+					<td> ----- </td>
+					<td> ----- </td>
+					<td> ----- </td>
+				</tr>
+				{{/each}}
+			</table>
+      <br> <br> <br>
+      {{/if}}
+      <br> <button class="izaberi" onclick={{action (mut student.visible) (if student.visible false true)}}> {{if student.visible 'Sakrij stanje ocena učenika' 'Prikaži stanje ocena učenika'}}  {{student.firstName}} {{student.lastName}} </button> <br> <br>
+    {{else}}
+      <b> Trenutno nema učenika u razredu! </b>
+    {{/each}}
+    </ol>
+
+    </table>
+
+	
+    </center>
+

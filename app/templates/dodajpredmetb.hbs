@@ -1,0 +1,30 @@
+<br> <br> <br>
+
+<center>
+
+<table>
+
+<h2> Izabrani razred: {{model.name}} </h2>
+
+<br>
+
+<i> Trenutni predmeti koji se pohađaju u razredu: </i> <br>
+
+<ol> 
+{{#each model.subjects as |subject|}}
+	<li> {{subject.title}} </li>
+{{else}}
+	<b> Trenutno se ne sluša nijedan predmet u razredu! </b>
+{{/each}}
+</ol>
+
+<br>
+
+<i> Unesite novi predmet za pohađanje u razredu:  </i> <br>
+
+<b> Naziv predmeta: </b> {{input text='text' value=title }} <br>
+<button {{action 'unosPredmeta' model.id}}> Unesite predmet u {{model.name}} razred </button>
+
+</table>
+
+</center>

@@ -1,0 +1,10 @@
+<br> <br> <br> <br> <br>
+<p class="unos">
+
+<b> Izaberite razred u koji želite dodati predmet za slušanje: </b> <br>
+
+{{#each model as |class|}}
+	{{#link-to 'dodajpredmetb' class.id}} {{class.name}} {{/link-to}} <br>
+{{/each}}
+
+</p>

@@ -1,0 +1,21 @@
+<header> 
+            <h1 class="begging"> 
+                {{#link-to 'application' class="naslov" }} Dobrodošli na web aplikaciju OŠ "10. oktobar" {{/link-to}} 
+                <img  class="naslovna" src="assets/images/imageOfSchool.png"> 
+                <img  class="naslovnaDva" src="assets/images/imageOfSchool.png">
+                <p class="meniBar">
+                    {{#link-to  'pregled'}} Pregled učenika {{/link-to}}  |  
+                     {{#link-to 'dodavanje'}} Dodavanje đaka/predmeta {{/link-to}}  |  
+                     {{#link-to 'kontakt'}}
+                     Kontakt informacije {{/link-to}}
+                </p>
+            </h1>
+</header>
+
+<br> <br> <br> <br>
+
+<div class="preklapanje">
+
+{{outlet}}
+
+</div>

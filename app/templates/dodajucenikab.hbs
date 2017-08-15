@@ -1,0 +1,30 @@
+<br> <br> <br>
+<center>
+
+<table>
+
+<h2> Izabrani razred: {{model.name}} </h2>
+
+<br>
+
+<i> Trenutni učenici u razredu: </i> <br>
+
+<ol> 
+{{#each model.students as |student|}}
+	<li> {{student.firstName}}  {{student.lastName}} </li>
+{{else}}
+	<b> Trenutno nema učenika u razredu! </b>
+{{/each}}
+</ol>
+
+<br>
+
+<i> Unesite novog učenika u razred: </i> <br>
+
+<b> Ime: </b> {{input text='text' value= firstName }} <br>
+<b> Prezime: </b> {{input text='text' value= lastName }} <br>
+<button {{action 'unosUcenika' model.id}}> Unesite predmet u {{model.name}} razred </button>
+
+</table>
+
+</center>

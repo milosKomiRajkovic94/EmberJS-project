@@ -1,0 +1,10 @@
+<br> <br> <br> <br> <br>
+<p class="unos">
+
+<b> Izaberite razred za koji želite pregledati učenike: </b> <br>
+
+{{#each model as |class|}}
+	{{#link-to 'pregleducenika' class.id}} {{class.name}} {{/link-to}} <br>
+{{/each}}
+
+</p>
